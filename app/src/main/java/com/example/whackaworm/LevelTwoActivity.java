@@ -19,7 +19,7 @@ public class LevelTwoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_level_one);
+        setContentView(R.layout.activity_level_two);
 
         textView = findViewById(R.id.timerTextView);
         ImageView imageViewWorm1 = findViewById(R.id.imageViewWorm1);
@@ -123,15 +123,23 @@ public class LevelTwoActivity extends AppCompatActivity {
             //Declare a global variable here
             Random random = new Random();
             int randNum;
+            int randNum2;
+            int randNum3;
 
             public void onTick(long millisUntilFinished) {
                 //Get the actual random value here
                 randNum = random.nextInt(8);
+                randNum2 = random.nextInt(8);
+                randNum3 = random.nextInt(8);
                 wormImageViews[randNum].setVisibility(View.VISIBLE);
+                wormImageViews[randNum2].setVisibility(View.VISIBLE);
+                wormImageViews[randNum3].setVisibility(View.VISIBLE);
             }
 
             public void onFinish() {
                 wormImageViews[randNum].setVisibility(View.INVISIBLE);
+                wormImageViews[randNum2].setVisibility(View.INVISIBLE);
+                wormImageViews[randNum3].setVisibility(View.INVISIBLE);
 
                 start();
 
@@ -146,6 +154,7 @@ public class LevelTwoActivity extends AppCompatActivity {
             }
             // When the task is over it will print 00:00:00 there
             public void onFinish() {
+                wormTimer.onFinish();
                 wormTimer.cancel();
                 textView.setText("0");
             }
